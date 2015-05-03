@@ -1,9 +1,26 @@
+
+/***********************
+LINES OBJECT
+***********************/
+
+var Lines = {
+  lineN: ['Times Square', '34th', '28th', '23rd', 'Union Square', '8th'],
+  lineL: ['8th', '6th', 'Union Square', '3rd', '1st'],
+  line6: ['Grand Central', '33rd', '28th', '23rd', 'Union Square', 'Astor Place']
+};
+
+/***********************
+FUNCTIONS
+***********************/
+
 var firstStopQ = function(message) {
-  prompt("Please enter your first stop: " + message);
+  var initialStop = prompt("Please enter your first stop: " + message);
+  return initialStop;
 };
 
 var lastStopQ = function(message) {
-  prompt("Please enter your last stop: " + message);
+  var lastStop = prompt("Please enter your last stop: " + message);
+  return lastStop;
 };
 
 var finalNum = function(totalStops, initialStop, lastStop) {
@@ -11,19 +28,20 @@ var finalNum = function(totalStops, initialStop, lastStop) {
 };
 
 var index = function(line, stop) {
-  switch(line) {
-  case 'N':
+  if(line === 'N'){
     return Lines.lineN.indexOf(stop);
-    break;
-  case 'L':
-    return ines.lineL.indexOf(stop);
-    break;
-  case '6':
+  } else if (line === 'L') {
+    return Lines.lineL.indexOf(stop);
+  } else if (line === '6')
     return Lines.line6.indexOf(stop);
-    break;
-}
+  };
+
+/***********************
+USER INPUT
+***********************/
 
 var initialLine = prompt("Please enter the line you will get on ('N', 'L', '6')");
+
 
 if(initialLine === 'N') {
   var initialStop = firstStopQ("'Times Square', '34th', '28th', '23rd', 'Union Square', '8th'");
@@ -45,20 +63,13 @@ if(initialLine === 'N') {
   var lastStop = lastStopQ("'Grand Central', '33rd', '28th', '23rd', 'Union Square', 'Astor Place'");
 }
 
-var Lines = {
-  lineN: ['Times Square', '34th', '28th', '23rd', 'Union Square', '8th'],
-  lineL: ['8th', '6th', 'Union Square', '3rd', '1st'],
-  line6: ['Grand Central', '33rd', '28th', '23rd', 'Union Square', 'Astor Place']
-};
-
-// Function for finding an index
-
-
+/**********************************
+CALCULATING THE NUMBER OF STOPS
+***********************************/
 
 if (initialLine === lastLine) {
-  
-  var index2 = Lines.lineN.indexOf(lastStop);
-
+  var index1 = index(initialLine, initialStop);
+  var index2 = index(lastLine, lastStop);
   var totalStops;
   if (index1 > index2) {
     totalStops = index1 - index2;
@@ -67,11 +78,3 @@ if (initialLine === lastLine) {
   }
   finalNum(totalStops, initialStop, lastStop);
 } 
-  else {
-  // calculate how far it is from initialStop to Union Sq on the initial line
-
-
-  // calculate how far it is from Union Sq to lastStop on the last line
-  finalNum(totalStops, initialStop, lastStop);
-  }
-
