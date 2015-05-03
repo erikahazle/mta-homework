@@ -36,6 +36,16 @@ var index = function(line, stop) {
     return Lines.line6.indexOf(stop);
   };
 
+var calcStops = function(index1, index2) {
+  if (index1 > index2) {
+    totalStops = index1 - index2;
+    return totalStops;
+  } else {
+    totalStops = index2 - index1;
+    return totalStops;
+  }
+};
+
 /***********************
 USER INPUT
 ***********************/
@@ -66,15 +76,31 @@ if(initialLine === 'N') {
 /**********************************
 CALCULATING THE NUMBER OF STOPS
 ***********************************/
+var index1 = index(initialLine, initialStop);
+var index2 = index(lastLine, lastStop);
+var unionSq1 = index(initialLine, 'Union Square');
+var unionSq2 = index(lastLine, 'Union Square');
+
+
 
 if (initialLine === lastLine) {
-  var index1 = index(initialLine, initialStop);
-  var index2 = index(lastLine, lastStop);
-  var totalStops;
-  if (index1 > index2) {
-    totalStops = index1 - index2;
-  } else {
-    totalStops = index2 - index1;
-  }
-  finalNum(totalStops, initialStop, lastStop);
-} 
+  totalStops = calcStops(index1, index2);
+} else {
+  totalStops = calcStops(index1, unionSq1) + calcStops(index2, unionSq2);
+}
+
+
+finalNum(totalStops, initialStop, lastStop);
+
+
+
+
+
+
+
+
+
+
+
+
+
