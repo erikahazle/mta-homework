@@ -61,6 +61,7 @@ if(initialLine === 'N') {
   var initialStop = firstStopQ("'Grand Central', '33rd', '28th', '23rd', 'Union Square', 'Astor Place'");
 } else {
   console.log('Unfortunately, this line does not exist...');
+  initialLine = prompt("Please enter the line you will get on ('N', 'L', '6')");
 }
 
 var lastLine = prompt("Please enter the line you will take ('N', 'L', '6')");
