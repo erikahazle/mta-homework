@@ -60,18 +60,21 @@ if(initialLine === 'N') {
 } else if (initialLine === '6'){
   var initialStop = firstStopQ("'Grand Central', '33rd', '28th', '23rd', 'Union Square', 'Astor Place'");
 } else {
-  console.log('Unfortunately, this line does not exist...');
-  initialLine = prompt("Please enter the line you will get on ('N', 'L', '6')");
+  alert("Unfortunately, this line does not exist... Press 'OK' to start again");
+  initialLine = prompt("Please enter the line you will get on at ('N', 'L', '6')");
 }
 
 var lastLine = prompt("Please enter the line you will take ('N', 'L', '6')");
 
-if(initialLine === 'N') {
+if(lastLine === 'N') {
   var lastStop = lastStopQ("'Times Square', '34th', '28th', '23rd', 'Union Square', '8th'");
-} else if (initialLine === 'L') {
+} else if (lastLine === 'L') {
   var lastStop = lastStopQ("'8th', '6th', 'Union Square', '3rd', '1st'");
-} else if (initialLine === '6') {
+} else if (lastLine === '6') {
   var lastStop = lastStopQ("'Grand Central', '33rd', '28th', '23rd', 'Union Square', 'Astor Place'");
+} else {
+  alert("Unfortunately, this line does not exist... Press 'OK' to start again");
+  lastLine = prompt("Please enter the line you will get off at ('N', 'L', '6')");
 }
 
 /**********************************
