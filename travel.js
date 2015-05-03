@@ -10,6 +10,19 @@ var finalNum = function(totalStops, initialStop, lastStop) {
   console.log("There are " + totalStops + " stops between " + initialStop + " and " + lastStop);
 };
 
+var index = function(line, stop) {
+  switch(line) {
+  case 'N':
+    var index1 = Lines.lineN.indexOf(stop);
+    break;
+  case 'L':
+    var index1 = Lines.lineL.indexOf(stop);
+    break;
+  case '6':
+    var index1 = Lines.line6.indexOf(stop);
+    break;
+}
+
 var initialLine = prompt("Please enter the line you will get on ('N', 'L', '6')");
 
 if(initialLine === 'N') {
@@ -38,23 +51,19 @@ var Lines = {
   line6: ['Grand Central', '33rd', '28th', '23rd', 'Union Square', 'Astor Place']
 };
 
-index1 = Lines[initialLine];
-
-console.log(index1);
-
+// Function for finding an index
 
 
 
 if (initialLine === lastLine) {
-  var index1 = Lines.lineN.indexOf(lastStop);
   
   var index2 = Lines.lineN.indexOf(lastStop);
 
   var totalStops;
   if (index1 > index2) {
-    totalStops = index1 - index2 + 1;
+    totalStops = index1 - index2;
   } else {
-    totalStops = index2 - index1 + 1;
+    totalStops = index2 - index1;
   }
   finalNum(totalStops, initialStop, lastStop);
 } 
