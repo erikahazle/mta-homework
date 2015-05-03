@@ -13,13 +13,13 @@ var finalNum = function(totalStops, initialStop, lastStop) {
 var index = function(line, stop) {
   switch(line) {
   case 'N':
-    var index1 = Lines.lineN.indexOf(stop);
+    return Lines.lineN.indexOf(stop);
     break;
   case 'L':
-    var index1 = Lines.lineL.indexOf(stop);
+    return ines.lineL.indexOf(stop);
     break;
   case '6':
-    var index1 = Lines.line6.indexOf(stop);
+    return Lines.line6.indexOf(stop);
     break;
 }
 
