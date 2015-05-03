@@ -1,28 +1,68 @@
-// var initialLine = prompt("Please enter the line you will get on ('N', 'L', '6')");
-// var initialStop = prompt("Please enter the name of your initial stop");
-// var lastLine = prompt("Please enter the line you will get off on ('N', 'L', '6')");
-// var lastStop = prompt("Please enter your last stop");
+var firstStopQ = function(message) {
+  prompt("Please enter your first stop: " + message);
+};
 
-function Line(stopsList) {
-  this.stopsList = stopsList;
-}
+var lastStopQ = function(message) {
+  prompt("Please enter your last stop: " + message);
+};
 
-var lineN = new Line(['Times Square', '34th', '28th', '23rd', 'Union Square', '8th']);
+var finalNum = function(totalStops, initialStop, lastStop) {
+  console.log("There are " + totalStops + " stops between " + initialStop + " and " + lastStop);
+};
 
-var lineL = new Line(['8th', '6th', 'Union Square', '3rd', '1st']);
+var initialLine = prompt("Please enter the line you will get on ('N', 'L', '6')");
 
-var line6 = new Line(['Grand Central', '33rd', '28th', '23rd', 'Union Square', 'Astor Place'])
-
-var initialStop = '8th'; lastStop = '34th';
-
-var index1 = lineN.stopsList.indexOf(initialStop);
-var index2 = lineN.stopsList.indexOf(lastStop);
-
-var totalStops;
-if (index1 > index2) {
-  totalStops = index1 - index2;
+if(initialLine === 'N') {
+  var initialStop = firstStopQ("'Times Square', '34th', '28th', '23rd', 'Union Square', '8th'");
+} else if (initialLine === 'L') {
+  var initialStop = firstStopQ("'8th', '6th', 'Union Square', '3rd', '1st'");
+} else if (initialLine === '6'){
+  var initialStop = firstStopQ("'Grand Central', '33rd', '28th', '23rd', 'Union Square', 'Astor Place'");
 } else {
-  totalStops = index2 - index1;
+  console.log('Unfortunately, this line does not exist...');
 }
 
-console.log("There are " + totalStops + " stops between " + initialStop + " and " + lastStop);
+var lastLine = prompt("Please enter the line you will take ('N', 'L', '6')");
+
+if(initialLine === 'N') {
+  var lastStop = lastStopQ("'Times Square', '34th', '28th', '23rd', 'Union Square', '8th'");
+} else if (initialLine === 'L') {
+  var lastStop = lastStopQ("'8th', '6th', 'Union Square', '3rd', '1st'");
+} else if (initialLine === '6') {
+  var lastStop = lastStopQ("'Grand Central', '33rd', '28th', '23rd', 'Union Square', 'Astor Place'");
+}
+
+var Lines = {
+  lineN: ['Times Square', '34th', '28th', '23rd', 'Union Square', '8th'],
+  lineL: ['8th', '6th', 'Union Square', '3rd', '1st'],
+  line6: ['Grand Central', '33rd', '28th', '23rd', 'Union Square', 'Astor Place']
+};
+
+index1 = Lines[initialLine];
+
+console.log(index1);
+
+
+
+
+if (initialLine === lastLine) {
+  var index1 = Lines.lineN.indexOf(lastStop);
+  
+  var index2 = Lines.lineN.indexOf(lastStop);
+
+  var totalStops;
+  if (index1 > index2) {
+    totalStops = index1 - index2 + 1;
+  } else {
+    totalStops = index2 - index1 + 1;
+  }
+  finalNum(totalStops, initialStop, lastStop);
+} 
+  else {
+  // calculate how far it is from initialStop to Union Sq on the initial line
+
+
+  // calculate how far it is from Union Sq to lastStop on the last line
+  finalNum(totalStops, initialStop, lastStop);
+  }
+
