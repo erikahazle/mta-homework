@@ -9,12 +9,18 @@ function Line(stopsList) {
 
 var lineN = new Line(['Times Square', '34th', '28th', '23rd', 'Union Square', '8th']);
 
+var initialStop = '8th'; lastStop = '34th';
 
-var stopsNum = function() {
-  var index1 = indexOf(initialNum);
-  var index2 = indexOf(lastNum);
-  
-  console.log(index2 - index1);
+
+var index1 = lineN.stopsList.indexOf(initialStop);
+var index2 = lineN.stopsList.indexOf(lastStop);
+
+var totalStops;
+if (index1 > index2) {
+  totalStops = index1 - index2;
+} else {
+  totalStops = index2 - index1;
 }
 
-stopsNum();
+
+console.log("There are " + totalStops + " stops between " + initialStop + " and " + lastStop);
